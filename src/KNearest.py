@@ -27,10 +27,11 @@ trainY = labels[:20000]
 learning.fit(trainX, trainY)
 
 # Test on the next 1000 images
-testX = images[10000:11000]
-expected = labels[10000:11000].tolist()
+testX = images[20000:22000]
+expected = labels[20000:22000].tolist()
 predicted = learning.predict(testX)
 
+# Print the accuracy score
 print("K Nearest Neighbours accuracy: ", accuracy_score(expected, predicted))
 
 confusion=metrics.confusion_matrix(expected,predicted)
@@ -41,7 +42,8 @@ plt.matshow(confusion, cmap='binary')
 df = pd.DataFrame(confusion, range(10), range(10))
 plt.figure(figsize=(10,7))
 sn.set(font_scale=1.4) # for label size
-confFig = sn.heatmap(df, annot=True, annot_kws={"size": 16}) # font size
+confFig = sn.heatmap(df, annot=True, fmt="d", annot_kws={"size": 16})
+
 # Save figure to file
 fig = confFig.get_figure()
 fig.savefig("KNearest.png")
