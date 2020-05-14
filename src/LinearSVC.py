@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-# K nearest neighbours classification of hand-drawn digits
+# Linear support vector classification of hand written digits
 
 from mnist import MNIST
 import matplotlib.pyplot as plt
 from sklearn import metrics
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import LinearSVC
 from pathlib import Path
 from sklearn.metrics import accuracy_score
 import seaborn as sn
@@ -17,7 +17,7 @@ data = MNIST(dataFolder)
 data.gz = True
 images, labels = data.load_training()
 
-learning = KNeighborsClassifier()
+learning = LinearSVC()
 
 # Train the model
 trainX = images[:20000]
@@ -44,4 +44,4 @@ confFig = sn.heatmap(df, annot=True, fmt="d", annot_kws={"size": 16})
 
 # Save figure to file
 fig = confFig.get_figure()
-fig.savefig("KNearest.png")
+fig.savefig("LinearSVC.png")
