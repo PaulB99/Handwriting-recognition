@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-# Linear support vector classification of hand written digits
+# Random forest classification of handwritten digits
 
 from mnist import MNIST
 import matplotlib.pyplot as plt
 from sklearn import metrics
-from sklearn.svm import LinearSVC
+from sklearn.ensemble import RandomForestClassifier
 from pathlib import Path
 from sklearn.metrics import accuracy_score
 import seaborn as sn
@@ -17,7 +17,7 @@ data = MNIST(dataFolder)
 data.gz = True
 images, labels = data.load_training()
 
-learning = LinearSVC()
+learning = RandomForestClassifier(n_estimators=1000)
 
 # Train the model
 trainX = images[:20000]
@@ -30,7 +30,7 @@ expected = labels[20000:22000].tolist()
 predicted = learning.predict(testX)
 
 # Print the accuracy score
-print("LinearSVC accuracy: ", accuracy_score(expected, predicted))
+print("Random forest accuracy: ", accuracy_score(expected, predicted))
 
 confusion=metrics.confusion_matrix(expected,predicted)
 print(confusion)
@@ -44,4 +44,4 @@ confFig = sn.heatmap(df, annot=True, fmt="d", annot_kws={"size": 16})
 
 # Save figure to file
 fig = confFig.get_figure()
-fig.savefig("LinearSVC.png")
+fig.savefig("RandomForest.png")
