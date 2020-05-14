@@ -9,3 +9,4 @@ So far I have implemented K nearest neighbour, Random forest and Linear support 
 To add:  
 * App?
 * Comparison between methods
+* Report on how training sample size affects accuracy in different methods of classification (overfitting)
