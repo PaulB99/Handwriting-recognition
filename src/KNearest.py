@@ -39,9 +39,10 @@ plt.matshow(confusion, cmap='binary')
 # Seaborn heatmap as a confusion matrix
 df = pd.DataFrame(confusion, range(10), range(10))
 plt.figure(figsize=(10,7))
+plt.title("K Nearest neighbour", fontsize =20)
 sn.set(font_scale=1.4) # for label size
 confFig = sn.heatmap(df, annot=True, fmt="d", annot_kws={"size": 16})
 
 # Save figure to file
 fig = confFig.get_figure()
-fig.savefig("KNearest.png")
+fig.savefig("../figures/KNearest.png")
